@@ -1,0 +1,23 @@
+.tag {
+    position: absolute;
+    background-color: rgba(0, 0, 0, .95);
+    color: white;
+    border-radius: 5px;
+}
+
+li {
+    list-style: none;
+    padding: .5rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+li:hover {
+    background-color: gray;
+    border-radius: 5px;
+}
+
+.hide {
+    display: none;
+}
