@@ -15,7 +15,7 @@ function App() {
 
   const app = initializeApp(firebaseConfig);
 
-  console.log(app)
+  //console.log(app)
   return (
     <div className="App">
       <h1>Hello World!</h1>
