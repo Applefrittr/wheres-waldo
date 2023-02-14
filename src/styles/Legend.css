@@ -1,0 +1,17 @@
+.legend {
+    /* width: 100%; */
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    border: solid 1px black;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+}
+
+.found {
+    opacity: .5;
+}
