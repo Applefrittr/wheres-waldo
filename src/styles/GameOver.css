@@ -1,0 +1,20 @@
+.new-game-popup {
+    border-radius: 50%;
+    flex-shrink: 0;
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.new-game-container {
+    background-color: rgba(0, 0, 0, .5);
+    width: 375px;
+    height: 250px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    gap: 1rem;
+}
