@@ -11,7 +11,7 @@ const Picture = (props) => {
   };
 
   const clicked = (e) => {
-    const top = ((e.pageY - 39) / e.target.clientHeight) * 100;
+    const top = ((e.pageY - 87) / e.target.clientHeight) * 100;
     const left = (e.pageX / e.target.clientWidth) * 100;
     console.log("top,left", [top, left]);
     setCoor({ top, left });

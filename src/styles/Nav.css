@@ -1,0 +1,27 @@
+@font-face {
+    font-family: Pokemon;
+    src: url("../Assets/PokemonSolidNormal-xyWR.ttf");
+}
+
+#root {
+    overflow: hidden;
+}
+
+.nav-bar {
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    background-color: red;
+    color: white;
+    font-family: Pokemon;
+    border-bottom: 1px solid black;
+}
+
+.nav-button-container {
+    display: flex;
+    gap: 1rem;
+}
+
+.nav-name {
+    text-shadow: 1px 1px black, -1px 1px black, 1px -1px black, -1px -1px black;
+}

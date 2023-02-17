@@ -1,16 +1,16 @@
-import { initializeApp } from "firebase/app";
-import { getStorage, ref, getDownloadURL, listAll } from "firebase/storage";
+import { ref, getDownloadURL, listAll } from "firebase/storage";
 import { useEffect, useState, useRef } from "react";
-import { getFirestore, getDocs, collection } from "firebase/firestore";
+import { getDocs, collection } from "firebase/firestore";
 import Picture from "./components/Picture";
 import Legend from "./components/Legend";
 import GameOver from "./components/GameOver";
-import Timer from "./components/Timer"
-import Scoreboard from "./components/Scoreboard"
+import Timer from "./components/Timer";
+import AnimatePage from "./components/AnimatePage";
+
 import "./styles/App.css";
 import { motion, AnimatePresence } from "framer-motion";
 
-function App() {
+function App(props) {
   // firebase data states
   const [pic, setPic] = useState("");
   const [charList, setCharList] = useState([]);
@@ -22,21 +22,22 @@ function App() {
   const [mouseDown, setMouseDown] = useState(false);
   const refTag = useRef();
   const [gameOver, setGameOver] = useState(false);
-  const [time, setTime] = useState(0)
+  const [time, setTime] = useState(0);
 
-  
-  const firebaseConfig = {
-    apiKey: "AIzaSyAtsn3IN3ptFzFQaEoXoRGSXibqjd2CuRo",
-    authDomain: "where-s-waldo-cc4e8.firebaseapp.com",
-    projectId: "where-s-waldo-cc4e8",
-    storageBucket: "where-s-waldo-cc4e8.appspot.com",
-    messagingSenderId: "107729072568",
-    appId: "1:107729072568:web:36c68765b8d66cb3549f4d",
-  };
+  // const firebaseConfig = {
+  //   apiKey: "AIzaSyAtsn3IN3ptFzFQaEoXoRGSXibqjd2CuRo",
+  //   authDomain: "where-s-waldo-cc4e8.firebaseapp.com",
+  //   projectId: "where-s-waldo-cc4e8",
+  //   storageBucket: "where-s-waldo-cc4e8.appspot.com",
+  //   messagingSenderId: "107729072568",
+  //   appId: "1:107729072568:web:36c68765b8d66cb3549f4d",
+  // };
 
-  const app = initializeApp(firebaseConfig);
-  const storage = getStorage(app);
-  const db = getFirestore(app);
+  // const app = initializeApp(firebaseConfig);
+  // const storage = getStorage(app);
+  // const db = getFirestore(app);
+  const storage = props.storage;
+  const db = props.db;
 
   // Download picture
   useEffect(() => {
@@ -119,51 +120,54 @@ function App() {
   };
 
   const getTime = (count) => {
-    setTime(count)
-  }
-  
+    setTime(count);
+  };
 
   return (
-    <div className="App">
-      <div className="nav">
-        <h1>Hello World!</h1>
-        {!gameOver && <Timer getTime = {getTime}/>}
-      </div>
-      <div className="container" onMouseMove={handleMouseMove}>
-        <Picture
-          pic={pic}
-          charList={charList}
-          charData={charData}
-          found={found}
-        />
-        <div
-          className="legend-container"
-          ref={refTag}
-          style={{ top: `${position.top}px`, left: `${position.left}px` }}
-        >
-          <Legend
-            charsFound={charsFound}
+    <AnimatePage>
+      <div className="App">
+        <div className="nav">{!gameOver && <Timer getTime={getTime} />}</div>
+        <div className="container" onMouseMove={handleMouseMove}>
+          <Picture
+            pic={pic}
             charList={charList}
-            handleMouseDown={handleMouseDown}
-            handleMouseUp={handleMouseUp}
+            charData={charData}
+            found={found}
           />
+          <div
+            className="legend-container"
+            ref={refTag}
+            style={{ top: `${position.top}px`, left: `${position.left}px` }}
+          >
+            <Legend
+              charsFound={charsFound}
+              charList={charList}
+              handleMouseDown={handleMouseDown}
+              handleMouseUp={handleMouseUp}
+            />
+          </div>
+          <AnimatePresence>
+            {gameOver && (
+              <motion.div
+                className="game-over"
+                animate={{ x: 0, y: 0, scale: 1, rotate: -720 }}
+                initial={{ x: 0, y: 0, scale: 0, rotate: 0 }}
+                exit={{ x: 0, y: 0, scale: 0, rotate: 720 }}
+                transition={{
+                  type: "spring",
+                  damping: 20,
+                  mass: 0.75,
+                  stiffness: 75,
+                }}
+              >
+                <GameOver newGame={newGame} time={time} db={db} />
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
-        <AnimatePresence>
-          {gameOver && (
-            <motion.div
-              className="game-over"
-              animate={{ x: 0, y: 0, scale: 1, rotate: -720 }}
-              initial={{ x: 0, y: 0, scale: 0, rotate: 0 }}
-              exit={{ x: 0, y: 0, scale: 0, rotate: 720 }}
-              transition={{ type: "spring", damping: 20, mass: 0.75, stiffness: 75 }}
-            >
-              <GameOver newGame={newGame} time={time} db={db}/>
-            </motion.div>
-          )}
-        </AnimatePresence>
+        {/* <Scoreboard db={db}/> */}
       </div>
-      <Scoreboard db={db}/>
-    </div>
+    </AnimatePage>
   );
 }
 

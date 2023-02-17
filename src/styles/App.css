@@ -53,3 +53,14 @@
     align-items: center;
     justify-content: center;
 }
+
+@media screen and (max-width: 865px) {
+    .legend-container {
+        position: static;
+    }
+
+    .game-over {
+        width: 325px;
+        height: 325px;
+    }
+}
