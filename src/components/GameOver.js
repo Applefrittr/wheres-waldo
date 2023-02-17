@@ -1,7 +1,22 @@
-import { easeInOut, motion } from "framer-motion";
+import { motion } from "framer-motion";
+import { addDoc, collection } from "firebase/firestore"
+import { useRef } from "react"
+import { timeDisplay } from "./Timer";
 import "../styles/GameOver.css";
 
 const GameOver = (props) => {
+
+  const inputRef = useRef()
+  
+  const addScore = async (e) => {
+    const db = props.db
+    await addDoc(collection(db, "users"), {
+      time: props.time,
+      name: inputRef.current.value
+    })
+    e.target.disabled = true
+  }
+
   return (
     <motion.section
       className="new-game-popup"
@@ -21,7 +36,14 @@ const GameOver = (props) => {
         transition={{delay: 2.8, duration: .5}}
         >
           <div>Game Over</div>
-          <span>Time to complete: {props.time}</span>
+          <form id="score-form">
+            <label htmlFor="user">High Score!</label>
+            <div>
+              <input id="user" placeholder="Username" ref={inputRef}></input>
+              <button type="button" onClick={addScore}>Submit</button>
+            </div>
+          </form>
+          <span>Time to complete: {timeDisplay(props.time)}</span>
           <button onClick={props.newGame}>New Game</button>
       </motion.div>
     </motion.section>

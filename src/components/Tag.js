@@ -12,7 +12,7 @@ const Tag = (props) => {
     const listElements = [];
     props.charList.forEach((char) => {
       listElements.push(
-        <li key={char.name} onClick={tag} id={char.name}>
+        <li key={char.name} onClick={tag} id={char.name} className="tag-item">
           <img src={char.charImg} alt="pokemon" id={char.name}/>
           {char.name}
         </li>

@@ -6,6 +6,7 @@ import Picture from "./components/Picture";
 import Legend from "./components/Legend";
 import GameOver from "./components/GameOver";
 import Timer from "./components/Timer"
+import Scoreboard from "./components/Scoreboard"
 import "./styles/App.css";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -156,11 +157,12 @@ function App() {
               exit={{ x: 0, y: 0, scale: 0, rotate: 720 }}
               transition={{ type: "spring", damping: 20, mass: 0.75, stiffness: 75 }}
             >
-              <GameOver newGame={newGame} time={time}/>
+              <GameOver newGame={newGame} time={time} db={db}/>
             </motion.div>
           )}
         </AnimatePresence>
       </div>
+      <Scoreboard db={db}/>
     </div>
   );
 }

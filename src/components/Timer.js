@@ -17,8 +17,12 @@ const Timer = (props) => {
   }, [time])
 
   return(
-    <span>Timer: {time}</span>
+    <span>Timer: {timeDisplay(time)}</span>
   )
 };
 
 export default Timer;
+
+export function timeDisplay(input) {
+  return `${Math.floor(input / 60)}:${input % 60 < 10 ? '0' : ''}${input % 60}`
+}
