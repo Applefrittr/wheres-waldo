@@ -126,7 +126,6 @@ function App(props) {
   return (
     <AnimatePage>
       <div className="App">
-        <div className="nav">{!gameOver && <Timer getTime={getTime} />}</div>
         <div className="container" onMouseMove={handleMouseMove}>
           <Picture
             pic={pic}
@@ -134,6 +133,7 @@ function App(props) {
             charData={charData}
             found={found}
           />
+          <div className="nav">{!gameOver && <Timer getTime={getTime} />}</div>
           <div
             className="legend-container"
             ref={refTag}
@@ -152,7 +152,7 @@ function App(props) {
                 className="game-over"
                 animate={{ x: 0, y: 0, scale: 1, rotate: -720 }}
                 initial={{ x: 0, y: 0, scale: 0, rotate: 0 }}
-                exit={{ x: 0, y: 0, scale: 0, rotate: 720 }}
+                exit={{ x: 1000, y: 0, opacity: 0, rotate: 720 }}
                 transition={{
                   type: "spring",
                   damping: 20,

@@ -13,7 +13,7 @@
     flex-wrap: wrap;
     align-items: center;
     width: 100%;
-    gap: 1rem;
+    gap: 2rem;
     position: relative;
 }
 
@@ -41,7 +41,7 @@
 }
 
 .game-over {
-    position: absolute;
+    position: fixed;
     padding: 2rem;
     width: 500px;
     height: 500px;
@@ -52,6 +52,20 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    top:20%;
+}
+
+#timer {
+    height: fit-content;
+    position: absolute;
+    border: solid 2px black;
+    box-shadow: 0 0 0 5px white, 0 0 0 10px black;
+    padding: .5rem;
+    border-radius: 10px;
+    background-color: white;
+    z-index: 10;
+    top: -20px;
+    left: 48%;
 }
 
 @media screen and (max-width: 865px) {
@@ -62,5 +76,9 @@
     .game-over {
         width: 325px;
         height: 325px;
+    }
+
+    #timer {
+        position:static;
     }
 }

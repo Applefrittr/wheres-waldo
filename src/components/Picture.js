@@ -11,9 +11,9 @@ const Picture = (props) => {
   };
 
   const clicked = (e) => {
-    const top = ((e.pageY - 87) / e.target.clientHeight) * 100;
-    const left = (e.pageX / e.target.clientWidth) * 100;
-    console.log("top,left", [top, left]);
+    const top = ((e.pageY - 67) / e.target.clientHeight) * 100;
+    const left = (e.pageX / window.innerWidth) * 100;
+    console.log("top,left", [top, left], e, e.target.offsetWidth, window.innerWidth);
     setCoor({ top, left });
     tagRef.current.classList.remove("hide");
   };

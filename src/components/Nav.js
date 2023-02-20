@@ -6,8 +6,8 @@ const Nav = () => {
         <section className="nav-bar">
             <h1 className="nav-name">PokeFind</h1>
             <div className="nav-button-container">
-                <Link to="/"><button>Home</button></Link>
-                <Link to="/scoreboard"><button>Scoreboard</button></Link>
+                <Link to="/"><button className="nav-button">Home</button></Link>
+                <Link to="/scoreboard"><button className="nav-button">Scoreboard</button></Link>
             </div>
         </section>
     )

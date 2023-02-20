@@ -17,7 +17,7 @@ const Timer = (props) => {
   }, [time])
 
   return(
-    <span>Timer: {timeDisplay(time)}</span>
+    <span id="timer">Timer: {timeDisplay(time)}</span>
   )
 };
 

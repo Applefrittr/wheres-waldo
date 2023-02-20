@@ -17,6 +17,12 @@
     opacity: .5;
 }
 
+.legend-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 @media screen and (max-width: 865px) {
     .legend {
         flex-direction: row;

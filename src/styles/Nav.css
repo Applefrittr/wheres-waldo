@@ -25,3 +25,20 @@
 .nav-name {
     text-shadow: 1px 1px black, -1px 1px black, 1px -1px black, -1px -1px black;
 }
+
+.nav-button {
+    padding: .5rem 2rem;
+    background-color: rgb(250, 250, 250);
+    border-radius: 10px;
+    transition: background-color .5s;
+    border: 2px solid black;
+}
+
+.nav-button:hover {
+    background-color: red;
+    box-shadow: 0 0 1px 1px black;
+}
+
+.nav-button:active {
+    background-color: darkred;
+}

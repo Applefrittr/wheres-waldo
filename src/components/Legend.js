@@ -19,7 +19,9 @@ const Legend = (props) => {
 
   return (
     <section className="legend" onMouseDown={props.handleMouseDown} onMouseUp={props.handleMouseUp}>
-      Pokedex
+      <div className="legend-header">
+        <span>Pokedex</span>
+      </div>
       {legend}
     </section>
   );
