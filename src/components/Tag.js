@@ -38,7 +38,6 @@ const Tag = (props) => {
     }
   };
 
-
   return (
     <div
       className="tag"

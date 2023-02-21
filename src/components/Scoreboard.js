@@ -9,11 +9,12 @@ import Ultraball from "../Assets/ultraball.png"
 import Greatball from "../Assets/greatball.png"
 import Pokeball from "../Assets/pokeball-icon.png"
 
-
+// Scoreboard component will render out the users added to the firebase firestore data collection
 const Scoreboard = (props) => {
   const [scores, setScores] = useState([]);
   const db = props.db;
 
+  // fetch data from the "users" collection in firestore and render out an array of <li> elements which contain a ranking icon and the user info (name and time)
   useEffect(() => {
     const getScores = async () => {
       const q = query(collection(db, "users"), orderBy("time"), limit(10));

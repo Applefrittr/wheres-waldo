@@ -14,13 +14,13 @@
     gap: 1rem;
     padding-left: 50%;
     padding-top: 8%;
+    padding-right: 2rem;
 }
 
 .home-name {
     font-family: Pokemon;
     font-size: 100px;
     color: navy;
-    /* text-shadow:  5px 10px navy, 5px -10px navy; */
     -webkit-text-stroke: 5px;
     -webkit-text-fill-color: yellow;
 }
@@ -74,7 +74,7 @@
     }
 }
 
-@media screen and (max-width: 450px){
+@media screen and (max-width: 480px){
     .home-name {
         font-size: 65px;
     }

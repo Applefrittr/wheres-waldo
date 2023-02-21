@@ -7,6 +7,7 @@ import AnimatePage from "./AnimatePage";
 const Home = () => {
   const [help, setHelp] = useState(false)
 
+  // Toggle help on and off using conditional rendering
   const howToPlay = () => {
     setHelp(!help)
   }
@@ -31,7 +32,7 @@ const Home = () => {
                 <div>- Click on Home in the navigation bar to return here to start again</div>
                 <div>- Add you name to the list of Pokemon Masters!  Aim for one of the Top 10 spots</div>
                 <div> *Tip - You can click and drag the Pokedex around the screen.</div>
-                <div> ** On smaller screens, the Pokedex is fixed at the bottom</div>
+                <div> **On smaller screens, the Pokedex is fixed at the bottom and the picture is scrollable</div>
               </section>
             </AnimatePage>}
           </AnimatePresence>

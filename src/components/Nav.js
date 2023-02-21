@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom"
 import "../styles/Nav.css"
 
+//Nav bar component with Links to the Home and Scoreboard components
 const Nav = () => {
     return(
         <section className="nav-bar">

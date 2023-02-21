@@ -9,12 +9,14 @@
 
 .container {
     display: flex;
-    justify-content: center;
+    /* justify-content: center; */
     flex-wrap: wrap;
     align-items: center;
     width: 100%;
-    gap: 2rem;
     position: relative;
+    overflow: auto;
+    gap: 1rem;
+    padding-bottom: 2rem;
 }
 
 .App {
@@ -52,7 +54,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    top:20%;
+    left:50%;
+    top: 50%;
 }
 
 #timer {
@@ -70,15 +73,18 @@
 
 @media screen and (max-width: 865px) {
     .legend-container {
+        padding:.25rem;
         position: static;
-    }
-
-    .game-over {
-        width: 325px;
-        height: 325px;
-    }
+        margin: auto;
+    } 
 
     #timer {
-        position:static;
+        top: -55px;
+        left: 20px
+    }
+}
+@media screen and (max-width: 480px){
+    .legend-container {
+        margin-left: 5rem;
     }
 }

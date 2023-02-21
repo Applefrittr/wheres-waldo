@@ -3,12 +3,12 @@ import { addDoc, collection } from "firebase/firestore"
 import { useRef } from "react"
 import { timeDisplay } from "./Timer";
 import "../styles/GameOver.css";
-import { Link } from "react-router-dom"
 
 const GameOver = (props) => {
 
   const inputRef = useRef()
   
+  // functionality for player to add his/her name to the scoreboard database, disables target button from continuous additions
   const addScore = async (e) => {
     const db = props.db
     await addDoc(collection(db, "users"), {
@@ -20,7 +20,7 @@ const GameOver = (props) => {
 
   return (
     <motion.section
-      className="new-game-popup"
+      className="expanding-animation"
       animate={{
         height: [0, 1800, 1850, 1900 ],
         width: [0, 1800, 1850, 1900 ],

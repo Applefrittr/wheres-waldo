@@ -6,7 +6,9 @@ import { getStorage } from "firebase/storage";
 import { getFirestore } from "firebase/firestore";
 import RoutePaths from "./components/RoutePaths";
 
+// Browser router for our App, initialize firebase and pass firestore and database references down the component tree
 const RouteSwitch = () => {
+
     const firebaseConfig = {
         apiKey: "AIzaSyAtsn3IN3ptFzFQaEoXoRGSXibqjd2CuRo",
         authDomain: "where-s-waldo-cc4e8.firebaseapp.com",
@@ -20,16 +22,10 @@ const RouteSwitch = () => {
       const storage = getStorage(app);
       const db = getFirestore(app);
     
-
     return(
         <BrowserRouter>
             <Nav />
             <RoutePaths storage={storage} db={db}/>
-            {/* <Routes>
-                <Route path="/" element= {<Home />} />
-                <Route path="/pokefind" element={<App storage={storage} db={db}/>} />
-                <Route path="/scoreboard" element= {<Scoreboard db={db}/>} />
-            </Routes> */}
         </BrowserRouter>
     )
 }
