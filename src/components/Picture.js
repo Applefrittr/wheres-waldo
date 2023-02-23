@@ -40,7 +40,7 @@ const Picture = (props) => {
           id="test"
           hide={hide}
           key="test"
-          charList={props.charList}
+          toFind={props.toFind}
           charData={props.charData}
           found = {props.found}
         />

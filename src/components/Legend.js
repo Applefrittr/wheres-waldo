@@ -3,7 +3,7 @@ import "../styles/Legend.css";
 const Legend = (props) => {
   const legend = [];
 
-  props.charList.forEach((char) => {
+  props.toFind.forEach((char) => {
     legend.push(
       <div
         key={char.name}

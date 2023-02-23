@@ -10,7 +10,7 @@ const Tag = (props) => {
   // to ensure the tag() has the updated prop values
   useEffect(() => {
     const listElements = [];
-    props.charList.forEach((char) => {
+    props.toFind.forEach((char) => {
       listElements.push(
         <li key={char.name} onClick={tag} id={char.name} className="tag-item">
           <img src={char.charImg} alt="pokemon" id={char.name}/>

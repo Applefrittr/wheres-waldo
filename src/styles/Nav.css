@@ -3,9 +3,9 @@
     src: url("../Assets/PokemonSolidNormal-xyWR.ttf");
 }
 
-/* #root {
-    overflow: hidden;
-} */
+#root {
+    overflow: auto;
+}
 
 .nav-bar {
     padding: 1rem;

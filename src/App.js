@@ -1,6 +1,4 @@
-import { ref, getDownloadURL, listAll } from "firebase/storage";
 import { useEffect, useState, useRef } from "react";
-import { getDocs, collection } from "firebase/firestore";
 import Picture from "./components/Picture";
 import Legend from "./components/Legend";
 import GameOver from "./components/GameOver";
@@ -11,10 +9,8 @@ import "./styles/App.css";
 import { motion, AnimatePresence } from "framer-motion";
 
 function App(props) {
-  // firebase data states
-  const [pic, setPic] = useState("");            // pic is picture to be used for the tagging app
-  const [charList, setCharList] = useState([]);  // charList is the 3 characters to be tagged in the photo
-  const [charData, setCharData] = useState([]);  // charData is the coordiante data of the characters in the photo
+  // state array to hold the characters to find
+  const [toFind, setToFind] = useState([])
   // state array to hold found and tagged characters in the picture
   const [charsFound, setCharsFound] = useState([]);
   // following states used in dragging around our Legend component on screen
@@ -25,51 +21,10 @@ function App(props) {
   const [gameOver, setGameOver] = useState(false);
   const [time, setTime] = useState(0);
 
-  const storage = props.storage;
-  const db = props.db;
-
-  // Download picture
+  // Call createToFindList when App.js is mounted
   useEffect(() => {
-    const picRef = ref(storage, "pokemon.jpg");
-    const getUrl = async () => {
-      const result = await getDownloadURL(picRef);
-      setPic(result);
-    };
-
-    getUrl();
-  }, [storage]);
-
-  // Download character images and names
-  useEffect(() => {
-    const charRef = ref(storage, "pokemon");
-
-    const getChars = async () => {
-      const results = await listAll(charRef);
-      const chars = results.items.map(async (itemRef) => {
-        const charImg = await getDownloadURL(itemRef);
-        const name = itemRef._location.path_.slice(8).slice(0, -4); // slice off the file directory and file type of to get just the file name
-        return { name, charImg };
-      });
-      const test = await Promise.all(chars);
-      setCharList(test);
-    };
-
-    getChars();
-  }, [storage]);
-
-  // Download character data (coordinates on the picture)
-  useEffect(() => {
-    const data = {};
-    const getData = async () => {
-      const querySnapshot = await getDocs(collection(db, "characters"));
-      querySnapshot.forEach((doc) => {
-        const docData = doc.data();
-        data[docData.name] = docData;
-      });
-      setCharData(data);
-    };
-    getData();
-  }, [db]);
+    createToFindList()
+  }, [])
 
   // Change this, tagging same pokemon three times to win game
   useEffect(() => {
@@ -102,6 +57,7 @@ function App(props) {
   const newGame = () => {
     setCharsFound([]);
     setGameOver(false);
+    createToFindList()
   };
 
   // method passed as a prop to the Timer component to keep track of game length
@@ -113,15 +69,28 @@ function App(props) {
     setCharsFound([...charsFound, char]);
   }
 
+  // Function which takes our charList prop retrieved from Firebase and pulls 3 random characters from list and sets them to the toFind state
+  const createToFindList = () => {
+    const copyCharList = [...props.charList]
+    const list = []
+    
+    while(list.length < 3) {
+      let index = Math.floor(Math.random() * copyCharList.length)
+      list.push(copyCharList[index])
+      copyCharList.splice(index, 1)
+    }
+    setToFind(list)
+  }
+
   return (
     <AnimatePage>
       <div className="App">
       <div className="nav">{!gameOver && <Timer getTime={getTime} />}</div>
         <div className="container" onMouseMove={handleMouseMove}>
           <Picture
-            pic={pic}
-            charList={charList}
-            charData={charData}
+            pic={props.pic}
+            toFind={toFind}
+            charData={props.charData}
             found={found}
           />
           <div
@@ -131,7 +100,7 @@ function App(props) {
           >
             <Legend
               charsFound={charsFound}
-              charList={charList}
+              toFind={toFind}
               handleMouseDown={handleMouseDown}
               handleMouseUp={handleMouseUp}
             />
@@ -150,7 +119,7 @@ function App(props) {
                   stiffness: 75,
                 }}
               >
-                <GameOver newGame={newGame} time={time} db={db} />
+                <GameOver newGame={newGame} time={time} db={props.db} />
               </motion.div>
             )}
           </AnimatePresence>

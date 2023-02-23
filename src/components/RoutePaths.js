@@ -12,7 +12,7 @@ const RoutePaths = (props) => {
     <AnimatePresence mode="wait">
       <Routes key={location.pathname} location={location}>
         <Route path="/" element={<Home />} />
-        <Route path="/pokefind" element={<App storage={props.storage} db={props.db} />} />
+        <Route path="/pokefind" element={<App pic={props.pic} charList={props.charList} charData={props.charData} db={props.db} />} />
         <Route path="/scoreboard" element={<Scoreboard db={props.db} />} />
       </Routes>
     </AnimatePresence>
