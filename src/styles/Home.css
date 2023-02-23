@@ -59,6 +59,7 @@
     width: fit-content;
     background-color: rgba(250, 250, 250, .6);
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin-top: 2rem;
 }
 
 @media screen and (max-width: 865px){

@@ -9,7 +9,7 @@ const Picture = (props) => {
   const [coor, setCoor] = useState({});
   const tagRef = useRef();
 
-  // hide fuction passed to the Tag component, will add CSS class "hide" to Tag comp when the user tags a character in the pi
+  // hide fuction passed to the Tag component, will add CSS class "hide" to Tag component when the user tags a character in the picture
   const hide = () => {
     tagRef.current.classList.add("hide");
   };
