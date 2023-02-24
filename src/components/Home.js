@@ -1,16 +1,26 @@
 import { AnimatePresence } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import "../styles/Home.css";
 import AnimatePage from "./AnimatePage";
+import Theme from "../Assets/Sounds/Theme.mp3"
 
 const Home = () => {
   const [help, setHelp] = useState(false)
+  const audio = useRef()
 
   // Toggle help on and off using conditional rendering
   const howToPlay = () => {
     setHelp(!help)
   }
+
+  useEffect(() => {
+    audio.current = new Audio(Theme)
+    audio.current.play()
+    return () => {
+      audio.current.pause()
+    }
+  }, [])
 
   return (
     <AnimatePage>

@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import "../styles/Tag.css";
+import Found from "../Assets/Sounds/Found.mp3"
 
 // tagging component that gets rendered where ever the user clicks on the screen.  Coordinates are passed from the Picture component.  Renders a box where the user
 // can choose from characters in a list to tag on the picture.  Char short for character
 const Tag = (props) => {
   const [tags, setTags] = useState([]);
+  const found = new Audio(Found)
 
   // Create an array of <li> elements (the tags).  This side effect fires everytime the prop values left and/or top change
   // to ensure the tag() has the updated prop values
@@ -32,6 +34,7 @@ const Tag = (props) => {
       props.top <= props.charData[charTag].bottomBound
     ) {
       console.log("YES!");
+      found.play()
       props.found(charTag)
     } else {
       console.log("No!");

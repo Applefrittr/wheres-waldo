@@ -17,6 +17,11 @@
     opacity: .5;
 }
 
+.found::after {
+    content: "✓";
+    color: green;
+}
+
 .legend-header {
     display: flex;
     justify-content: space-between;

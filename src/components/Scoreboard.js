@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { collection, query, limit, getDocs, orderBy } from "firebase/firestore";
 import { timeDisplay } from "./Timer";
 import AnimatePage from "./AnimatePage";
@@ -8,11 +8,21 @@ import Masterball from "../Assets/masterball.png"
 import Ultraball from "../Assets/ultraball.png"
 import Greatball from "../Assets/greatball.png"
 import Pokeball from "../Assets/pokeball-icon.png"
+import Ending from "../Assets/Sounds/Ending.mp3"
 
 // Scoreboard component will render out the users added to the firebase firestore data collection
 const Scoreboard = (props) => {
   const [scores, setScores] = useState([]);
+  const audio = useRef()
   const db = props.db;
+
+  useEffect(() => {
+    audio.current = new Audio(Ending)
+    audio.current.play()
+    return () => {
+      audio.current.pause()
+    }
+  }, [])
 
   // fetch data from the "users" collection in firestore and render out an array of <li> elements which contain a ranking icon and the user info (name and time)
   useEffect(() => {

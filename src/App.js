@@ -4,13 +4,13 @@ import Legend from "./components/Legend";
 import GameOver from "./components/GameOver";
 import Timer from "./components/Timer";
 import AnimatePage from "./components/AnimatePage";
-
 import "./styles/App.css";
 import { motion, AnimatePresence } from "framer-motion";
+import Azalea from "./Assets/Sounds/AzaleaTown.mp3";
 
 function App(props) {
   // state array to hold the characters to find
-  const [toFind, setToFind] = useState([])
+  const [toFind, setToFind] = useState([]);
   // state array to hold found and tagged characters in the picture
   const [charsFound, setCharsFound] = useState([]);
   // following states used in dragging around our Legend component on screen
@@ -20,15 +20,49 @@ function App(props) {
   // gameOver state used to determine game end, time to record length of game
   const [gameOver, setGameOver] = useState(false);
   const [time, setTime] = useState(0);
+  const audio = useRef();
+
+  useEffect(() => {
+    audio.current = new Audio(Azalea);
+    audio.current.loop = true;
+    audio.current.play();
+    return () => {
+      audio.current.pause();
+    };
+  }, []);
+
+  useEffect(() => {
+    // gameOver ? audio.current.pause() : audio.current.play()
+    if (gameOver) {
+      const decrease = setInterval(() => {
+        audio.current.volume -= 0.2;
+      }, 200);
+      setTimeout(() => {
+        clearInterval(decrease);
+        audio.current.pause();
+      }, 1000);
+    } else {
+      setTimeout(() => {
+        audio.current.play();
+        const increase = setInterval(() => {
+          audio.current.volume += 0.2;
+        }, 200);
+        setTimeout(() => {
+          clearInterval(increase);
+        }, 1000);
+      }, 1000);
+    }
+  }, [gameOver]);
 
   // Call createToFindList when App.js is mounted
   useEffect(() => {
-    createToFindList()
-  }, [])
+    createToFindList();
+  }, []);
 
   // Change this, tagging same pokemon three times to win game
   useEffect(() => {
-    if (charsFound.length === 3) {
+    const set = new Set(charsFound);
+    if (set.size === 3) {
       console.log("Found them All!");
       setGameOver(true);
     }
@@ -57,7 +91,7 @@ function App(props) {
   const newGame = () => {
     setCharsFound([]);
     setGameOver(false);
-    createToFindList()
+    createToFindList();
   };
 
   // method passed as a prop to the Timer component to keep track of game length
@@ -67,25 +101,25 @@ function App(props) {
 
   const found = (char) => {
     setCharsFound([...charsFound, char]);
-  }
+  };
 
   // Function which takes our charList prop retrieved from Firebase and pulls 3 random characters from list and sets them to the toFind state
   const createToFindList = () => {
-    const copyCharList = [...props.charList]
-    const list = []
-    
-    while(list.length < 3) {
-      let index = Math.floor(Math.random() * copyCharList.length)
-      list.push(copyCharList[index])
-      copyCharList.splice(index, 1)
+    const copyCharList = [...props.charList];
+    const list = [];
+
+    while (list.length < 3) {
+      let index = Math.floor(Math.random() * copyCharList.length);
+      list.push(copyCharList[index]);
+      copyCharList.splice(index, 1);
     }
-    setToFind(list)
-  }
+    setToFind(list);
+  };
 
   return (
     <AnimatePage>
       <div className="App">
-      <div className="nav">{!gameOver && <Timer getTime={getTime} />}</div>
+        <div className="nav">{!gameOver && <Timer getTime={getTime} />}</div>
         <div className="container" onMouseMove={handleMouseMove}>
           <Picture
             pic={props.pic}
@@ -111,12 +145,13 @@ function App(props) {
                 className="game-over"
                 animate={{ x: -250, y: -250, scale: 1, rotate: -720 }}
                 initial={{ x: -250, y: -250, scale: 0, rotate: 0 }}
-                exit={{ x: 1000, y: 0, opacity: 0, rotate: 720 }}
+                exit={{ opacity: 0 }}
                 transition={{
                   type: "spring",
                   damping: 20,
                   mass: 0.75,
                   stiffness: 75,
+                  duration: 1,
                 }}
               >
                 <GameOver newGame={newGame} time={time} db={props.db} />
