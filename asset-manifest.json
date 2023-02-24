@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/wheres-waldo/static/css/main.6845e14e.css",
+    "main.js": "/wheres-waldo/static/js/main.34c2dc97.js",
+    "static/media/AzaleaTown.mp3": "/wheres-waldo/static/media/AzaleaTown.c2698f3b8d1ec4664dfa.mp3",
+    "static/media/Theme.mp3": "/wheres-waldo/static/media/Theme.748ee0ac43d13ce59a36.mp3",
+    "static/media/Ending.mp3": "/wheres-waldo/static/media/Ending.7303bf21af3388ba9562.mp3",
+    "static/media/Victory.mp3": "/wheres-waldo/static/media/Victory.9bc19a27863ee29984ed.mp3",
+    "static/media/pokeball.png": "/wheres-waldo/static/media/pokeball.493785ffc371d4b347d8.png",
+    "static/media/Found.mp3": "/wheres-waldo/static/media/Found.44b2dab7dbb9c7407de5.mp3",
+    "static/media/pikachu.jpg": "/wheres-waldo/static/media/pikachu.ec6c1ba079ae3f53de96.jpg",
+    "static/media/pokeball-background.jpg": "/wheres-waldo/static/media/pokeball-background.61665d823ed59eb8baea.jpg",
+    "static/media/pokeball-open.wav": "/wheres-waldo/static/media/pokeball-open.de69cc93bc55beb58f34.wav",
+    "static/media/PokemonSolidNormal-xyWR.ttf": "/wheres-waldo/static/media/PokemonSolidNormal-xyWR.5d60be1f7ff5fcc21fc1.ttf",
+    "static/media/ultraball.png": "/wheres-waldo/static/media/ultraball.95173681e91008f2d111.png",
+    "static/media/greatball.png": "/wheres-waldo/static/media/greatball.5cb634ee685bf857509d.png",
+    "static/media/masterball.png": "/wheres-waldo/static/media/masterball.0145ee7d004c17dcf6b4.png",
+    "static/media/pokeball-icon.png": "/wheres-waldo/static/media/pokeball-icon.18dbccc706a0e49d48c6.png",
+    "index.html": "/wheres-waldo/index.html",
+    "main.6845e14e.css.map": "/wheres-waldo/static/css/main.6845e14e.css.map",
+    "main.34c2dc97.js.map": "/wheres-waldo/static/js/main.34c2dc97.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6845e14e.css",
+    "static/js/main.34c2dc97.js"
+  ]
+}
