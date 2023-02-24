@@ -16,6 +16,7 @@
     font-family: Pokemon;
     border-bottom: 1px solid black;
     height: 67px;
+    align-items: center;
 }
 
 .nav-button-container {
