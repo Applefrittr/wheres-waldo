@@ -15,6 +15,7 @@
     color: white;
     font-family: Pokemon;
     border-bottom: 1px solid black;
+    height: 67px;
 }
 
 .nav-button-container {

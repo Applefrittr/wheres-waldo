@@ -73,7 +73,7 @@ const RouteSwitch = () => {
   }, [db]);
 
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/wheres-waldo">
       <Nav />
       <RoutePaths pic={pic} charList={charList} charData={charData} db={db} />
     </BrowserRouter>
