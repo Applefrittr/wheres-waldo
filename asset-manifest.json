@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/wheres-waldo/static/css/main.6845e14e.css",
+    "main.css": "/wheres-waldo/static/css/main.ab6f61ea.css",
     "main.js": "/wheres-waldo/static/js/main.34c2dc97.js",
     "static/media/AzaleaTown.mp3": "/wheres-waldo/static/media/AzaleaTown.c2698f3b8d1ec4664dfa.mp3",
     "static/media/Theme.mp3": "/wheres-waldo/static/media/Theme.748ee0ac43d13ce59a36.mp3",
@@ -17,11 +17,11 @@
     "static/media/masterball.png": "/wheres-waldo/static/media/masterball.0145ee7d004c17dcf6b4.png",
     "static/media/pokeball-icon.png": "/wheres-waldo/static/media/pokeball-icon.18dbccc706a0e49d48c6.png",
     "index.html": "/wheres-waldo/index.html",
-    "main.6845e14e.css.map": "/wheres-waldo/static/css/main.6845e14e.css.map",
+    "main.ab6f61ea.css.map": "/wheres-waldo/static/css/main.ab6f61ea.css.map",
     "main.34c2dc97.js.map": "/wheres-waldo/static/js/main.34c2dc97.js.map"
   },
   "entrypoints": [
-    "static/css/main.6845e14e.css",
+    "static/css/main.ab6f61ea.css",
     "static/js/main.34c2dc97.js"
   ]
 }
