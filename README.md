@@ -3,7 +3,9 @@
 A Pokemon themed Where's Waldo puzzle created by Applefrittr where the user "tags" a character in the picture from a drop down menu.  Firebase used to store picture and character assets, as well as coordinate data of each character in the picture.  React.js and framer motion used to build out the front end logic and UI.
 
 Picture credited to [Yavazin](https://twitter.com/yavazin/status/605328024641236992) on Twitter
+
 Pokemon character pictures/icons curtesy of [Pokemon Database](https://pokemondb.net/)
+
 Songs from [GB Pokémon Complete Sound CD](https://downloads.khinsider.com/game-soundtracks/album/pokemon-game-boy-pok-mon-sound-complete-set-play-cd) and [Pokemon Gold & Silver](https://downloads.khinsider.com/game-soundtracks/album/pokemon-gold-silver)
 
 Live preview: https://applefrittr.github.io/wheres-waldo/
